@@ -27,6 +27,10 @@ dependencies {
     testImplementation(platform("org.junit:junit-bom:5.10.1"))
 }
 
+tasks.compileJava {
+    options.release = 21
+}
+
 tasks.test {
     useJUnitPlatform()
     // https://technology.lastminute.com/junit5-kotlin-and-gradle-dsl/
