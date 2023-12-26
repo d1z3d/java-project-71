@@ -17,8 +17,8 @@ jobs:
       - uses: gradle/gradle-build-action@v2
         with:
           gradle-version: 8.5
-      - run: ./gradlew checkstyleMain
-      - run: ./gradlew checkstyleTest
+      - run: gradle checkstyleMain
+      - run: gradle checkstyleTest
       
       - name: Publish code coverage
         uses: paambaati/codeclimate-action@v5.0.0
