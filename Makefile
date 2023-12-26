@@ -3,3 +3,6 @@ run-dist:
 
 run-with-arg-h:
 	./build/install/app/bin/app -h
+
+build:
+	gradle build
