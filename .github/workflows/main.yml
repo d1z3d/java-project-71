@@ -21,9 +21,9 @@ jobs:
         with:
           gradle-version: 8.3
       - name: Run gradle checkstyle
-        run: ./gradlew checkstyleMain
+        run: gradlew checkstyleMain
       - name: Run Gradle checkstyleTest
-        run: ./gradlew checkstyleTest
+        run: gradlew checkstyleTest
       
       - name: Publish code coverage
         uses: paambaati/codeclimate-action@v5.0.0
