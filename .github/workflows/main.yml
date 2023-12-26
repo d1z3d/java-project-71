@@ -19,7 +19,7 @@ jobs:
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
         with:
-          gradle-version: 8.5
+          gradle-version: 8.3
       - name: Run build with Gradle Wrapper
         run: ./gradlew build
       - name: Run gradle checkstyle
