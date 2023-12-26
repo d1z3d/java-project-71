@@ -22,8 +22,7 @@ jobs:
           gradle-version: 8.3
       - name: Run gradle checkstyle
         run: 
-          cd /home/runner/gradle-installations/installs/gradle-8.3/bin/gradle
-          ./gradlew checkstyleMain
+          cd /home/runner/gradle-installations/installs/gradle-8.3/bin/gradle && ./gradlew checkstyleMain
       - name: Run Gradle checkstyleTest
         run: gradlew checkstyleTest
       
