@@ -20,10 +20,6 @@ jobs:
         uses: gradle/gradle-build-action@v2
         with:
           gradle-version: 8.3
-      - name: Grant exec to Gradle
-        run: chmod +x gradlew
-      - name: Run build with Gradle Wrapper
-        run: ./gradlew build
       - name: Run gradle checkstyle
         run: ./gradlew checkstyleMain
       - name: Run Gradle checkstyleTest
