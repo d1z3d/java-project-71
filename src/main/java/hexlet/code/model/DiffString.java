@@ -41,10 +41,16 @@ public class DiffString implements Comparable<DiffString> {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         DiffString that = (DiffString) o;
-        return idFile == that.idFile && Objects.equals(operation, that.operation) && Objects.equals(key, that.key) && Objects.equals(value, that.value);
+        return idFile == that.idFile && Objects.equals(operation, that.operation)
+                && Objects.equals(key, that.key)
+                && Objects.equals(value, that.value);
     }
 
     @Override
