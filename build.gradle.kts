@@ -27,6 +27,7 @@ dependencies {
     testImplementation(platform("org.junit:junit-bom:5.10.1"))
     testImplementation("org.junit.jupiter:junit-jupiter:5.9.2")
     testImplementation(platform("org.junit:junit-bom:5.10.1"))
+    testImplementation("com.github.stefanbirkner:system-lambda:1.2.1")
 }
 
 tasks.compileJava {
@@ -43,6 +44,19 @@ tasks.test {
         // showCauses = true
         showStandardStreams = true
     }
+    finalizedBy(tasks.jacocoTestReport)
 }
 
-tasks.jacocoTestReport { reports { xml.required.set(true) } }
+jacoco {
+    toolVersion = "0.8.9"
+    reportsDirectory = layout.buildDirectory.dir("reports/jacoco/test")
+}
+
+tasks.jacocoTestReport {
+    dependsOn(tasks.test)
+    reports {
+        xml.required = false
+        csv.required = false
+        html.outputLocation = layout.buildDirectory.dir("jacocoHtml")
+    }
+}
