@@ -6,9 +6,13 @@ import org.junit.jupiter.api.Test;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 
 public class UtilTest {
     private Path firstPathToFile;
@@ -37,7 +41,7 @@ public class UtilTest {
 
     @Test
     public void getDataTest() throws Exception {
-        Map<String, Object>  expected = new HashMap<>();
+        Map<String, Object> expected = new HashMap<>();
         expected.put("host", "hexlet.io");
         expected.put("timeout", 50);
         expected.put("proxy", "123.234.53.22");
