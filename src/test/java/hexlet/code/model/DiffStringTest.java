@@ -57,7 +57,10 @@ public class DiffStringTest {
 
     @Test
     public void hashCodeTest() {
-        int actual = Objects.hash(diffString1.getIdFile(), diffString1.getOperation(), diffString1.getKey(), diffString1.getValue());
+        int actual = Objects.hash(diffString1.getIdFile(),
+                diffString1.getOperation(),
+                diffString1.getKey(),
+                diffString1.getValue());
         int expected1 = Objects.hash(1, " ", "name", "Andrey");
         assertEquals(expected1, actual);
 

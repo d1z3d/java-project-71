@@ -12,17 +12,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class UtilTest {
     private Path firstPathToFile;
-    private Path secondPathToFile;
     private Path pathDoesntExist;
-    private Path badPath;
 
 
     @BeforeEach
     public void prepareData() {
         firstPathToFile = Paths.get("src", "test", "resources", "stubs", "file1Test.json");
-        secondPathToFile = Paths.get("src", "test", "resources", "stubs", "file2Test.json");
         pathDoesntExist = Paths.get("src", "test", "resources", "stubs", "pathDoesntExist.json");
-        badPath = pathDoesntExist;
     }
 
     @Test
@@ -50,6 +46,5 @@ public class UtilTest {
         Map<String, Object> actualMap = Util.getData(fileData);
 
         assertEquals(actualMap.size(), expected.size());
-        //assertEquals(actualMap.entrySet(), expected.entrySet());
     }
 }
