@@ -8,7 +8,7 @@ test:
 	make -C app test
 
 report:
-	make -C app ./gradlew test jacocoTestReport
+	./gradlew test jacocoTestReport
 
 lint:
 	make -C app lint
