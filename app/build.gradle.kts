@@ -49,14 +49,11 @@ tasks.test {
 
 jacoco {
     toolVersion = "0.8.9"
-    reportsDirectory = layout.buildDirectory.dir("reports/jacoco/test")
+    reportsDirectory
 }
 
 tasks.jacocoTestReport {
-    dependsOn(tasks.test)
     reports {
-        xml.required = false
-        csv.required = false
-        html.outputLocation = layout.buildDirectory.dir("jacocoHtml")
+        xml.required = true
     }
 }
