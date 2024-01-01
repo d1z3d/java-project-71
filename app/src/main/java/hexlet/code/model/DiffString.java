@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
 import java.util.Objects;
 
 @Getter
@@ -56,19 +55,5 @@ public class DiffString implements Comparable<DiffString> {
     @Override
     public int hashCode() {
         return Objects.hash(idFile, operation, key, value);
-    }
-
-    public static String listToString(List<DiffString> diffStrings) {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("{\n");
-        for (DiffString differ : diffStrings) {
-            stringBuilder.append(String.format("\t%s %s: %s\n",
-                    differ.getOperation(),
-                    differ.getKey(),
-                    differ.getValue()));
-        }
-        stringBuilder.append("}");
-
-        return stringBuilder.toString();
     }
 }

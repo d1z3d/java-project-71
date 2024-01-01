@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import static hexlet.code.Differ.generate;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DifferTest {
@@ -20,7 +21,7 @@ public class DifferTest {
 
     @Test
     public void generateTest() throws Exception {
-        String actual = Differ.generate(firstPathToFile.toString(), secondPathToFile.toString());
+        String actual = generate(firstPathToFile.toString(), secondPathToFile.toString(), "stylish");
         String expected = "{\n\t+ action: test field that starts with A"
                 + "\n\t- follow: false\n\t"
                 + "  host: hexlet.io\n\t"

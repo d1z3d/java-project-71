@@ -48,12 +48,12 @@ public class DiffStringTest {
         assertEquals(expected, actual);
     }
 
-    @Test
+    /*@Test
     public void listToString() {
         String actual = DiffString.listToString(list);
         String expected = "{\n\t  name: Andrey\n\t  name: Andrey\n\t  about: Andrey\n\t  before: Andrey\n}";
         assertEquals(actual, expected);
-    }
+    }*/
 
     @Test
     public void hashCodeTest() {

@@ -24,6 +24,12 @@ run:
 test:
 	./gradlew test
 
+test-yml:
+	./build/install/app/bin/app /home/d1z3d/file3.yml /home/d1z3d/file4.yml
+
+test-json:
+	./build/install/app/bin/app /home/d1z3d/file1.json /home/d1z3d/file2.json
+
 report:
 	./gradlew jacocoTestReport
 
