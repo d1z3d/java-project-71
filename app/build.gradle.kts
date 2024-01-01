@@ -56,4 +56,5 @@ tasks.jacocoTestReport {
     reports {
         xml.required = true
     }
+
 }
