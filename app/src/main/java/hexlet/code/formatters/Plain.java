@@ -24,7 +24,6 @@ public class Plain implements Comparable<Plain> {
         this.key = key;
         this.valueOfFirstFile = valueOfFirstFile;
         this.valueOfSecondFile = valueOfSecondFile;
-
     }
 
     @Override
@@ -67,33 +66,17 @@ public class Plain implements Comparable<Plain> {
 
         for (String key : map1.keySet()) {
             if (!map2.containsKey(key)) {
-                result.add(new Plain("removed", key,
-                        map1.get(key) instanceof Object[]
-                        ? "[complex value]"
-                        : map1.get(key),
-                        ""));
+                result.add(new Plain("removed", key, map1.get(key), ""));
             } else if (map1.get(key) == null || map2.get(key) == null) {
                 if (map1.get(key) != map2.get(key)) {
-                    result.add(new Plain("updated", key,
-                            map1.get(key) instanceof Object[]
-                                    ? "[complex value]"
-                                    : map1.get(key),
-                            map2.get(key) instanceof Object[]
-                                    ? "[complex value]"
-                                    : map2.get(key)));
+                    result.add(new Plain("updated", key, map1.get(key), map2.get(key)));
                     map2.remove(key);
                 } else {
                     map2.remove(key);
                 }
             } else {
                 if (!map1.get(key).equals(map2.get(key))) {
-                    result.add(new Plain("updated", key,
-                            map1.get(key) instanceof Object[]
-                                    ? "[complex value]"
-                                    : map1.get(key),
-                            map2.get(key) instanceof Object[]
-                                    ? "[complex value]"
-                                    : map2.get(key)));
+                    result.add(new Plain("updated", key, map1.get(key), map2.get(key)));
                     map2.remove(key);
                 } else {
                     map2.remove(key);
@@ -102,10 +85,7 @@ public class Plain implements Comparable<Plain> {
         }
 
         for (String key : map2.keySet()) {
-            result.add(new Plain("added", key, "",
-                    map2.get(key) instanceof Object[]
-                            ? "[complex value]"
-                            : map2.get(key)));
+            result.add(new Plain("added", key, "", map2.get(key)));
         }
 
         Collections.sort(result);
@@ -115,19 +95,40 @@ public class Plain implements Comparable<Plain> {
     private static String listToString(List<Plain> diffStrings) {
         StringBuilder stringBuilder = new StringBuilder();
         for (Plain differ : diffStrings) {
+            Object value1 = differ.getValueOfFirstFile();
+            Object value2 = differ.getValueOfSecondFile();
+
+
+            if (value1 != null) {
+                if (value1.getClass().toString().startsWith("class java.util.")) {
+                    value1 = "[complex value]";
+                } else if (value1.getClass().toString().equals("class java.lang.String")) {
+                    value1 = String.format("'%s'", value1);
+                }
+            }
+
+            if (value2 != null) {
+                if (value2.getClass().toString().startsWith("class java.util.")) {
+                    value2 = "[complex value]";
+                } else if (value2.getClass().toString().equals("class java.lang.String")) {
+                    value2 = String.format("'%s'", value2);
+                }
+            }
+
+
             switch (differ.getOperation()) {
-                case "added" -> stringBuilder.append(String.format("Property '%s' was %s with value: '%s'\n",
+                case "added" -> stringBuilder.append(String.format("Property '%s' was %s with value: %s\n",
                         differ.getKey(),
                         differ.getOperation(),
-                        differ.getValueOfSecondFile()));
+                        value2));
                 case "removed" -> stringBuilder.append(String.format("Property '%s' was %s\n",
                         differ.getKey(),
                         differ.getOperation()));
                 case "updated" -> stringBuilder.append(String.format("Property '%s' was %s. From %s to %s\n",
                         differ.getKey(),
                         differ.getOperation(),
-                        differ.getValueOfFirstFile(),
-                        differ.getValueOfSecondFile()));
+                        value1,
+                        value2));
                 default -> {
                 }
             }
