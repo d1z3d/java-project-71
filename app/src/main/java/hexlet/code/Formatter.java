@@ -1,17 +1,25 @@
 package hexlet.code;
 
+import hexlet.code.formatters.Json;
 import hexlet.code.formatters.Plain;
 import hexlet.code.formatters.Stylish;
 
+import java.util.List;
 import java.util.Map;
 
 public class Formatter {
-    public static String format(Map<String, Object> dataFromFirstFile,
-                                Map<String, Object> dataFromSecondFile,
-                                String format) {
-        if (format.equals("plain")) {
-            return Plain.fill(dataFromFirstFile, dataFromSecondFile);
+    public static String format(List<Map<String, Object>> comparedData,
+                                String format) throws Exception {
+        switch (format.toLowerCase()) {
+            case "plain" -> {
+                return Plain.fillAsPlain(comparedData);
+            }
+            case "json" -> {
+                return Json.fillAsJson(comparedData);
+            }
+            default -> {
+                return Stylish.fillAsStylish(comparedData);
+            }
         }
-        return Stylish.fill(dataFromFirstFile, dataFromSecondFile);
     }
 }

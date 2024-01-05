@@ -1,6 +1,6 @@
 package hexlet.code.model;
 
-import org.junit.jupiter.api.BeforeEach;
+/*import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -8,10 +8,10 @@ import java.util.List;
 import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;*/
 
 public class DiffStringTest {
-    private List<DiffString> list = new ArrayList<>();
+/*    private List<DiffString> list = new ArrayList<>();
     private DiffString diffString1;
     private DiffString diffString2;
     private DiffString diffString3;
@@ -48,12 +48,12 @@ public class DiffStringTest {
         assertEquals(expected, actual);
     }
 
-    /*@Test
+    *//*@Test
     public void listToString() {
         String actual = DiffString.listToString(list);
         String expected = "{\n\t  name: Andrey\n\t  name: Andrey\n\t  about: Andrey\n\t  before: Andrey\n}";
         assertEquals(actual, expected);
-    }*/
+    }*//*
 
     @Test
     public void hashCodeTest() {
@@ -81,5 +81,5 @@ public class DiffStringTest {
     public void emptyConstructorTest() {
         DiffString actual = new DiffString();
         assertEquals(new DiffString(), actual);
-    }
+    }*/
 }

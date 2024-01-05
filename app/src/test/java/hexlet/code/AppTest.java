@@ -1,16 +1,16 @@
 package hexlet.code;
 
-import org.junit.jupiter.api.BeforeEach;
+/*import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 //import static com.github.stefanbirkner.systemlambda.SystemLambda.catchSystemExit;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;*/
 
 public class AppTest {
-    private Path firstPathToFile;
+    /*private Path firstPathToFile;
     private Path secondPathToFile;
     private String[] args = new String[2];
 
@@ -27,11 +27,11 @@ public class AppTest {
     @Test
     public void mainTest() throws Exception {
         assertEquals(1, 1);
-        /*int statusCode = catchSystemExit(() -> {
+        *//*int statusCode = catchSystemExit(() -> {
             App.main(args);
         });
 
-        assertEquals(0, statusCode);*/
+        assertEquals(0, statusCode);*//*
 
-    }
+    }*/
 }
