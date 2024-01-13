@@ -11,47 +11,23 @@ public class Util {
         List<Map<String, Object>> result = new ArrayList<>();
 
         for (String key : getKeysFromMaps(firstMap, secondMap)) {
-            Map<String, Object> node = new HashMap<>();
+            Map<String, Object> node;
             if (firstMap.containsKey(key) && secondMap.containsKey(key)) {
                 if (firstMap.get(key) == null || secondMap.get(key) == null) {
                     if (firstMap.get(key) != secondMap.get(key)) {
-                        node.put("key", key);
-                        node.put("operation", "updated");
-                        node.put("hasInBothFiles", true);
-                        node.put("valueOfFirstFile", firstMap.get(key));
-                        node.put("valueOfSecondFile", secondMap.get(key));
+                        node = createNode(key, "updated", true, firstMap.get(key), secondMap.get(key));
                     } else {
-                        node.put("key", key);
-                        node.put("operation", "equals");
-                        node.put("hasInBothFiles", true);
-                        node.put("valueOfFirstFile", firstMap.get(key));
-                        node.put("valueOfSecondFile", secondMap.get(key));
+                        node = createNode(key, "equals", true, firstMap.get(key), secondMap.get(key));
                     }
                 } else if (!firstMap.get(key).equals(secondMap.get(key))) {
-                    node.put("key", key);
-                    node.put("operation", "updated");
-                    node.put("hasInBothFiles", true);
-                    node.put("valueOfFirstFile", firstMap.get(key));
-                    node.put("valueOfSecondFile", secondMap.get(key));
+                    node = createNode(key, "updated", true, firstMap.get(key), secondMap.get(key));
                 } else {
-                    node.put("key", key);
-                    node.put("operation", "equals");
-                    node.put("hasInBothFiles", true);
-                    node.put("valueOfFirstFile", firstMap.get(key));
-                    node.put("valueOfSecondFile", secondMap.get(key));
+                    node = createNode(key, "equals", true, firstMap.get(key), secondMap.get(key));
                 }
             } else if (firstMap.containsKey(key)) {
-                node.put("key", key);
-                node.put("operation", "removed");
-                node.put("hasInBothFiles", false);
-                node.put("valueOfFirstFile", firstMap.get(key));
-                node.put("valueOfSecondFile", null);
+                node = createNode(key, "removed", false, firstMap.get(key), null);
             } else {
-                node.put("key", key);
-                node.put("operation", "added");
-                node.put("hasInBothFiles", false);
-                node.put("valueOfFirstFile", null);
-                node.put("valueOfSecondFile", secondMap.get(key));
+                node = createNode(key, "added", false, null, secondMap.get(key));
             }
             result.add(node);
         }
@@ -67,6 +43,16 @@ public class Util {
         }
         Collections.sort(keys);
         return keys;
+    }
+
+    private static Map<String, Object> createNode(String key, String operation, boolean hasInBothFiles, Object valueOfFirstFile, Object valueOfSecondFile) {
+        Map<String, Object> node = new HashMap<>();
+        node.put("key", key);
+        node.put("operation", operation);
+        node.put("hasInBothFiles", hasInBothFiles);
+        node.put("valueOfFirstFile", valueOfFirstFile);
+        node.put("valueOfSecondFile", valueOfSecondFile);
+        return node;
     }
 
 }

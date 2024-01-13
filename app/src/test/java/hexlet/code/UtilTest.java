@@ -11,11 +11,11 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;*/
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 public class UtilTest {
-/*    private Path firstPathToFile;
+    private Path firstPathToFile;
     private Path pathDoesntExist;
 
 
@@ -49,6 +49,7 @@ public class UtilTest {
         String fileData = Util.parse(firstPathToFile.toString());
         Map<String, Object> actualMap = Util.getData(fileData);
 
-        assertEquals(actualMap.size(), expected.size());*/
+        assertEquals(actualMap.size(), expected.size());
 
-}
+    }
+}*/
