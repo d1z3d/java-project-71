@@ -10,8 +10,8 @@ clean:
 build:
 	./gradlew clean build --stacktrace
 
-installDist:
-	./gradlew clean installDist
+install:
+	./gradlew clean install
 
 run-dist:
 	./build/install/app/bin/app
@@ -31,9 +31,7 @@ check-deps:
 report:
 	./gradlew jacocoTestReport
 
-
 build-run: build run
-
 
 test-yml:
 	./build/install/app/bin/app /home/d1z3d/file3.yml /home/d1z3d/file4.yml
