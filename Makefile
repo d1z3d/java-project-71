@@ -1,3 +1,4 @@
+.PHONY: build
 build:
 	make -C app build
 
@@ -13,6 +14,7 @@ report:
 lint:
 	make -C app lint
 
+.PHONY: installDist
 installDist:
 	make -C app installDist
 
@@ -22,4 +24,4 @@ setup:
 clean:
 	make -C app clean
 
-.PHONY: build
+
