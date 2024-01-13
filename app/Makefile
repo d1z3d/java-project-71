@@ -1,19 +1,17 @@
-# Makefile
 .DEFAULT_GOAL := build-run
+.PHONY: build setup clean install run run-dist test lint check-deps report
 
 setup:
-	gradle wrapper --gradle-version 8.4
+	./gradlew wrapper --gradle-version 8.4
 
 clean:
 	./gradlew clean
 
-.PHONY: build
 build:
-	./gradlew clean build
+	./gradlew clean build --stacktrace
 
-.PHONY: installDist
-installDist:
-	./gradlew clean installDist
+install:
+	./gradlew clean install
 
 run-dist:
 	./build/install/app/bin/app
@@ -21,25 +19,24 @@ run-dist:
 run:
 	./gradlew run
 
-.PHONY: test
 test:
-	./gradlew test
+	./gradlew jacocoTestReport
+
+lint:
+	./gradlew checkstyleMain
+
+check-deps:
+	./gradlew dependencyUpdates -Drevision=release
+
+report:
+	./gradlew jacocoTestReport
+
+
+build-run: build run
+
 
 test-yml:
 	./build/install/app/bin/app /home/d1z3d/file3.yml /home/d1z3d/file4.yml
 
 test-json:
 	./build/install/app/bin/app /home/d1z3d/file1.json /home/d1z3d/file2.json
-
-report:
-	./gradlew jacocoTestReport
-
-lint:
-	./gradlew checkstyleMain checkstyleTest
-
-check-deps:
-	./gradlew dependencyUpdates -Drevision=release
-
-
-build-run:
-	build run
