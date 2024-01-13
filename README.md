@@ -7,3 +7,7 @@
 [Step 7](https://asciinema.org/a/ORJ4NflGQDOaVtRqqNXoIEeD3)
 
 [Step 8](https://asciinema.org/a/aMhs0jmeHkeJGfRHoTdqK04fP)
+
+[Step 9](https://asciinema.org/a/o4HhktbCLUo1PUjQi5d2nc9vn)
+
+[Step 10](https://asciinema.org/a/ADVwojLVhjx34WBS4GXZfDYF9)
