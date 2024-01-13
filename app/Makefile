@@ -11,7 +11,7 @@ clean:
 build:
 	./gradlew clean build
 
-install:
+installDist:
 	./gradlew clean installDist
 
 run-dist:
@@ -40,4 +40,5 @@ check-deps:
 	./gradlew dependencyUpdates -Drevision=release
 
 
-build-run: build run
+build-run:
+	build run
