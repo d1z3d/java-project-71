@@ -3,3 +3,4 @@
 
 ## Asciinema
 [Step 5](https://asciinema.org/a/thPcphhGE1LrNDhfl2Zd5FdiC)
+[Step 7](https://asciinema.org/a/ORJ4NflGQDOaVtRqqNXoIEeD3)
