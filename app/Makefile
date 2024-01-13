@@ -11,6 +11,7 @@ clean:
 build:
 	./gradlew clean build
 
+.PHONY: installDist
 installDist:
 	./gradlew clean installDist
 
