@@ -40,13 +40,15 @@ public class ParserTest {
     @Test
     public void parseTest() throws Exception {
 
-        Map<String, Object> actual1 = jsonMapper.readValue(Files.readString(jsonPathFile), new TypeReference<Map<String, Object>>() { });
+        Map<String, Object> actual1 = jsonMapper.readValue(Files.readString(jsonPathFile),
+                new TypeReference<Map<String, Object>>() { });
         Map<String, Object> expected1 = Parser.parse(jsonPathFile.toString());
 
         assertEquals(actual1, expected1);
         assertTrue(exception.getMessage().contains(expExpectedMessage));
 
-        Map<String, Object> actual2 = yamlMapper.readValue(Files.readString(yamlPathFile), new TypeReference<Map<String, Object>>() { });
+        Map<String, Object> actual2 = yamlMapper.readValue(Files.readString(yamlPathFile),
+                new TypeReference<Map<String, Object>>() { });
         Map<String, Object> expected2 = Parser.parse(yamlPathFile.toString());
         assertEquals(actual2, expected2);
     }

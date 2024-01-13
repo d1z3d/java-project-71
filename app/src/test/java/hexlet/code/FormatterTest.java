@@ -57,28 +57,42 @@ public class FormatterTest {
 
         stringBuilderToJson = new StringBuilder();
         stringBuilderToJson.append("{\"differ\":[{\"hasInBothFiles\":false,\"valueOfSecondFile\":"
-                + "\"test field that starts with A\",\"valueOfFirstFile\":null,\"operation\":\"added\",\"key\":\"action\"},"
-                + "{\"hasInBothFiles\":false,\"valueOfSecondFile\":null,\"valueOfFirstFile\":false,\"operation\":\"removed\","
-                + "\"key\":\"follow\"},{\"hasInBothFiles\":true,\"valueOfSecondFile\":\"hexlet.io\",\"valueOfFirstFile\":\"hexlet.io\","
-                + "\"operation\":\"equals\",\"key\":\"host\"},{\"hasInBothFiles\":true,\"valueOfSecondFile\":\"avs\","
-                + "\"valueOfFirstFile\":[1,2,3,4],\"operation\":\"updated\",\"key\":\"numbers1\"},{\"hasInBothFiles\":false,"
-                + "\"valueOfSecondFile\":null,\"valueOfFirstFile\":\"123.234.53.22\",\"operation\":\"removed\",\"key\":\"proxy\"},"
-                + "{\"hasInBothFiles\":true,\"valueOfSecondFile\":20,\"valueOfFirstFile\":50,\"operation\":\"updated\",\"key\":\"timeout\"},"
-                + "{\"hasInBothFiles\":false,\"valueOfSecondFile\":true,\"valueOfFirstFile\":null,\"operation\":\"added\",\"key\":\"verbose\"}]}");
+                + "\"test field that starts with A\",\"valueOfFirstFile\":null,"
+                + "\"operation\":\"added\",\"key\":\"action\"},"
+                + "{\"hasInBothFiles\":false,\"valueOfSecondFile\":null,"
+                + "\"valueOfFirstFile\":false,\"operation\":\"removed\","
+                + "\"key\":\"follow\"},{\"hasInBothFiles\":true,\"valueOfSecondFile\":"
+                + "\"hexlet.io\",\"valueOfFirstFile\":\"hexlet.io\","
+                + "\"operation\":\"equals\",\"key\":\"host\"},{\"hasInBothFiles\""
+                + ":true,\"valueOfSecondFile\":\"avs\","
+                + "\"valueOfFirstFile\":[1,2,3,4],\"operation\":\"updated\",\"key\":"
+                + "\"numbers1\"},{\"hasInBothFiles\":false,"
+                + "\"valueOfSecondFile\":null,\"valueOfFirstFile\":\"123.234.53.22\","
+                + "\"operation\":\"removed\",\"key\":\"proxy\"},"
+                + "{\"hasInBothFiles\":true,\"valueOfSecondFile\":20,\"valueOfFirstFile\":50,"
+                + "\"operation\":\"updated\",\"key\":\"timeout\"},"
+                + "{\"hasInBothFiles\":false,\"valueOfSecondFile\":true,\"valueOfFirstFile\":null,"
+                + "\"operation\":\"added\",\"key\":\"verbose\"}]}");
     }
 
     @Test
     public void formatTest() throws Exception {
         String actualStylish = stringBuilderToStylish.toString();
-        String expectedStylish = Formatter.format(Util.compareData(dataFromFirstJsonFile, dataFromSecondJsonFile), "stylish");
+        String expectedStylish = Formatter.format(Util.compareData(dataFromFirstJsonFile,
+                dataFromSecondJsonFile),
+                "stylish");
         assertEquals(expectedStylish, actualStylish);
 
         String actualPlain = stringBuilderToPlain.toString();
-        String expectedPlain = Formatter.format(Util.compareData(dataFromFirstJsonFile, dataFromSecondJsonFile), "plain");
+        String expectedPlain = Formatter.format(Util.compareData(dataFromFirstJsonFile,
+                dataFromSecondJsonFile),
+                "plain");
         assertEquals(actualPlain, expectedPlain);
 
         String actualJson = stringBuilderToJson.toString();
-        String expectedJson = Formatter.format(Util.compareData(dataFromFirstJsonFile, dataFromSecondJsonFile), "json");
+        String expectedJson = Formatter.format(Util.compareData(dataFromFirstJsonFile,
+                dataFromSecondJsonFile),
+                "json");
         assertEquals(actualJson, expectedJson);
     }
 }

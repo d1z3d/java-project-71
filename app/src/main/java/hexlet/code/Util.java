@@ -45,7 +45,11 @@ public class Util {
         return keys;
     }
 
-    private static Map<String, Object> createNode(String key, String operation, boolean hasInBothFiles, Object valueOfFirstFile, Object valueOfSecondFile) {
+    private static Map<String, Object> createNode(String key,
+                                                  String operation,
+                                                  boolean hasInBothFiles,
+                                                  Object valueOfFirstFile,
+                                                  Object valueOfSecondFile) {
         Map<String, Object> node = new HashMap<>();
         node.put("key", key);
         node.put("operation", operation);
