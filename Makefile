@@ -14,9 +14,8 @@ report:
 lint:
 	make -C app lint
 
-.PHONY: install
-install:
-	make -C app install
+installDist:
+	make -C app installDist
 
 setup:
 	make -C app setup

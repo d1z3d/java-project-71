@@ -10,8 +10,8 @@ clean:
 build:
 	./gradlew clean build --stacktrace
 
-install:
-	./gradlew clean install
+installDist:
+	./gradlew clean installDist
 
 run-dist:
 	./build/install/app/bin/app
