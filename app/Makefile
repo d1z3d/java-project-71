@@ -20,7 +20,7 @@ run:
 	./gradlew run
 
 test:
-	./gradlew jacocoTestReport
+	./gradlew test jacocoTestReport
 
 lint:
 	./gradlew checkstyleMain
