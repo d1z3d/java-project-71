@@ -13,4 +13,13 @@ report:
 lint:
 	make -C app lint
 
+install:
+	make -C app install
+
+setup:
+	make -C app setup
+
+clean:
+	make -C app clean
+
 .PHONY: build
