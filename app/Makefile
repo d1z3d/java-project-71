@@ -11,7 +11,7 @@ build:
 	./gradlew clean build --stacktrace
 
 install:
-	./gradlew clean install
+	./gradlew installDist
 
 run-dist:
 	./build/install/app/bin/app
