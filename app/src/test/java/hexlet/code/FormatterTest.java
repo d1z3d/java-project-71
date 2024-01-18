@@ -18,9 +18,9 @@ public class FormatterTest {
     private Map<String, Object> dataFromSecondJsonFile;
     private Map<String, Object> dataFromFirstYamlFile;
     private Map<String, Object> dataFromSecondYamlFile;
-    StringBuilder stringBuilderToStylish;
-    StringBuilder stringBuilderToPlain;
-    StringBuilder stringBuilderToJson;
+    private StringBuilder stringBuilderToStylish;
+    private StringBuilder stringBuilderToPlain;
+    private StringBuilder stringBuilderToJson;
 
     @BeforeEach
     public void prepareData() throws Exception {
