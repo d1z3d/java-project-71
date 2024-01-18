@@ -9,7 +9,7 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class FormatterTest {
+public final class FormatterTest {
     private Path jsonPathFile1;
     private Path jsonPathFile2;
     private Path yamlPathFile1;

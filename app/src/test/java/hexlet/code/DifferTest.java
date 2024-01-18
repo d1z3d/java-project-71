@@ -8,7 +8,7 @@ import java.nio.file.Paths;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class DifferTest {
+public final class DifferTest {
     private Path firstPathToFile;
     private Path secondPathToFile;
     private StringBuilder stringBuilder;
