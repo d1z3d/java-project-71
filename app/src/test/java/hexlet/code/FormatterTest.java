@@ -24,10 +24,10 @@ public class FormatterTest {
 
     @BeforeEach
     public void prepareData() throws Exception {
-        jsonPathFile1 = Paths.get("src", "test", "resources", "stubs", "file1Test.json");
-        jsonPathFile2 = Paths.get("src", "test", "resources", "stubs", "file2Test.json");
-        yamlPathFile1 = Paths.get("src", "test", "resources", "stubs", "file3Test.yml");
-        yamlPathFile2 = Paths.get("src", "test", "resources", "stubs", "file4Test.yml");
+        jsonPathFile1 = Paths.get("src", "test", "resources", "file1Test.json");
+        jsonPathFile2 = Paths.get("src", "test", "resources", "file2Test.json");
+        yamlPathFile1 = Paths.get("src", "test", "resources", "file3Test.yml");
+        yamlPathFile2 = Paths.get("src", "test", "resources", "file4Test.yml");
 
         dataFromFirstJsonFile = Parser.parse(jsonPathFile1.toString());
         dataFromSecondJsonFile = Parser.parse(jsonPathFile2.toString());

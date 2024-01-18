@@ -26,9 +26,9 @@ public class ParserTest {
 
     @BeforeEach
     public void prepareData() {
-        jsonPathFile = Paths.get("src", "test", "resources", "stubs", "file1Test.json");
-        yamlPathFile = Paths.get("src", "test", "resources", "stubs", "file3Test.yml");
-        pathDoesntExist = Paths.get("src", "test", "resources", "stubs", "pathDoesntExist.json");
+        jsonPathFile = Paths.get("src", "test", "resources", "file1Test.json");
+        yamlPathFile = Paths.get("src", "test", "resources", "file3Test.yml");
+        pathDoesntExist = Paths.get("src", "test", "resources", "pathDoesntExist.json");
         exception = assertThrows(Exception.class, () -> {
             Parser.parse(pathDoesntExist.toString());
         });

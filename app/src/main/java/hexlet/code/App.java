@@ -8,8 +8,7 @@ import java.util.concurrent.Callable;
         mixinStandardHelpOptions = true,
         version = "gendiff 1.0",
         description = "Compares two configuration files and shows a difference.")
-public class App implements Callable<Integer> {
-
+public final class App implements Callable<Integer> {
     @CommandLine.Parameters(index = "0",
             description = "path to first file")
     private String filepath1;
@@ -19,7 +18,6 @@ public class App implements Callable<Integer> {
 
     @CommandLine.Option(names = {"-f", "--format"},
             defaultValue = "stylish",
-            required = false,
             description = "out format [default: stylish]")
     private String format;
     @Override

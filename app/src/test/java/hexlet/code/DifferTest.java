@@ -15,8 +15,8 @@ public class DifferTest {
 
     @BeforeEach
     public void prepareData() {
-        firstPathToFile = Paths.get("src", "test", "resources", "stubs", "file1Test.json");
-        secondPathToFile = Paths.get("src", "test", "resources", "stubs", "file2Test.json");
+        firstPathToFile = Paths.get("src", "test", "resources", "file1Test.json");
+        secondPathToFile = Paths.get("src", "test", "resources", "file2Test.json");
         stringBuilder = new StringBuilder();
         stringBuilder.append("{\n");
         stringBuilder.append("  + action: test field that starts with A\n");
