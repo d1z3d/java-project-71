@@ -1,6 +1,3 @@
-.DEFAULT_GOAL := build-run
-.PHONY: build setup clean install run run-dist test lint check-deps report
-
 setup:
 	./gradlew wrapper --gradle-version 8.4
 
@@ -30,8 +27,6 @@ check-deps:
 
 report:
 	./gradlew jacocoTestReport
-
-build-run: build run
 
 test-yml:
 	./build/install/app/bin/app /home/d1z3d/file3.yml /home/d1z3d/file4.yml
