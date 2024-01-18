@@ -19,15 +19,15 @@ public class DifferTest {
         secondPathToFile = Paths.get("src", "test", "resources", "stubs", "file2Test.json");
         stringBuilder = new StringBuilder();
         stringBuilder.append("{\n");
-        stringBuilder.append("\t+ action: test field that starts with A\n");
-        stringBuilder.append("\t- follow: false\n");
-        stringBuilder.append("\t  host: hexlet.io\n");
-        stringBuilder.append("\t- numbers1: [1, 2, 3, 4]\n");
-        stringBuilder.append("\t+ numbers1: avs\n");
-        stringBuilder.append("\t- proxy: 123.234.53.22\n");
-        stringBuilder.append("\t- timeout: 50\n");
-        stringBuilder.append("\t+ timeout: 20\n");
-        stringBuilder.append("\t+ verbose: true\n");
+        stringBuilder.append("  + action: test field that starts with A\n");
+        stringBuilder.append("  - follow: false\n");
+        stringBuilder.append("    host: hexlet.io\n");
+        stringBuilder.append("  - numbers1: [1, 2, 3, 4]\n");
+        stringBuilder.append("  + numbers1: avs\n");
+        stringBuilder.append("  - proxy: 123.234.53.22\n");
+        stringBuilder.append("  - timeout: 50\n");
+        stringBuilder.append("  + timeout: 20\n");
+        stringBuilder.append("  + verbose: true\n");
         stringBuilder.append("}");
     }
 

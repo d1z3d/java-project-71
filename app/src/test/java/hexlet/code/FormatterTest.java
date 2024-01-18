@@ -36,15 +36,15 @@ public class FormatterTest {
 
         stringBuilderToStylish = new StringBuilder();
         stringBuilderToStylish.append("{\n");
-        stringBuilderToStylish.append("\t+ action: test field that starts with A\n");
-        stringBuilderToStylish.append("\t- follow: false\n");
-        stringBuilderToStylish.append("\t  host: hexlet.io\n");
-        stringBuilderToStylish.append("\t- numbers1: [1, 2, 3, 4]\n");
-        stringBuilderToStylish.append("\t+ numbers1: avs\n");
-        stringBuilderToStylish.append("\t- proxy: 123.234.53.22\n");
-        stringBuilderToStylish.append("\t- timeout: 50\n");
-        stringBuilderToStylish.append("\t+ timeout: 20\n");
-        stringBuilderToStylish.append("\t+ verbose: true\n");
+        stringBuilderToStylish.append("  + action: test field that starts with A\n");
+        stringBuilderToStylish.append("  - follow: false\n");
+        stringBuilderToStylish.append("    host: hexlet.io\n");
+        stringBuilderToStylish.append("  - numbers1: [1, 2, 3, 4]\n");
+        stringBuilderToStylish.append("  + numbers1: avs\n");
+        stringBuilderToStylish.append("  - proxy: 123.234.53.22\n");
+        stringBuilderToStylish.append("  - timeout: 50\n");
+        stringBuilderToStylish.append("  + timeout: 20\n");
+        stringBuilderToStylish.append("  + verbose: true\n");
         stringBuilderToStylish.append("}");
 
         stringBuilderToPlain = new StringBuilder();

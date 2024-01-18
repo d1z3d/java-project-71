@@ -10,26 +10,26 @@ public class Stylish {
         for (var node : data) {
             Object operation = node.get("operation");
             if (operation.equals("added")) {
-                stringBuilder.append(String.format("\t%s %s: %s\n",
+                stringBuilder.append(String.format("  %s %s: %s\n",
                         "+",
                         node.get("key"),
                         node.get("valueOfSecondFile")));
             } else if (operation.equals("equals")) {
-                stringBuilder.append(String.format("\t%s %s: %s\n",
+                stringBuilder.append(String.format("  %s %s: %s\n",
                         " ",
                         node.get("key"),
                         node.get("valueOfFirstFile")));
             } else if (operation.equals("removed")) {
-                stringBuilder.append(String.format("\t%s %s: %s\n",
+                stringBuilder.append(String.format("  %s %s: %s\n",
                         "-",
                         node.get("key"),
                         node.get("valueOfFirstFile")));
             } else if (operation.equals("updated")) {
-                stringBuilder.append(String.format("\t%s %s: %s\n",
+                stringBuilder.append(String.format("  %s %s: %s\n",
                         "-",
                         node.get("key"),
                         node.get("valueOfFirstFile")));
-                stringBuilder.append(String.format("\t%s %s: %s\n",
+                stringBuilder.append(String.format("  %s %s: %s\n",
                         "+",
                         node.get("key"),
                         node.get("valueOfSecondFile")));
