@@ -7,7 +7,7 @@ plugins {
     id("checkstyle")
 }
 
-group = "io.hexlet"
+group = "hexlet.code"
 
 version = "1.0-SNAPSHOT"
 
@@ -25,7 +25,6 @@ dependencies {
     testImplementation(platform("org.junit:junit-bom:5.10.1"))
     testImplementation("org.junit.jupiter:junit-jupiter:5.9.2")
     testImplementation(platform("org.junit:junit-bom:5.10.1"))
-    testImplementation("com.github.stefanbirkner:system-lambda:1.2.1")
 }
 
 tasks.compileJava {
