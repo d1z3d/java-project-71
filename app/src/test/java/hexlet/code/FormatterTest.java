@@ -53,7 +53,7 @@ public class FormatterTest {
         stringBuilderToPlain.append("Property 'numbers1' was updated. From [complex value] to 'avs'\n");
         stringBuilderToPlain.append("Property 'proxy' was removed\n");
         stringBuilderToPlain.append("Property 'timeout' was updated. From 50 to 20\n");
-        stringBuilderToPlain.append("Property 'verbose' was added with value: true\n");
+        stringBuilderToPlain.append("Property 'verbose' was added with value: true");
 
         stringBuilderToJson = new StringBuilder();
         stringBuilderToJson.append("{\"differ\":[{\"hasInBothFiles\":false,\"valueOfSecondFile\":"

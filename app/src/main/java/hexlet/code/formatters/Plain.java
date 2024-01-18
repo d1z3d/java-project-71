@@ -51,6 +51,6 @@ public class Plain {
             }
         }
 
-        return stringBuilder.toString();
+        return stringBuilder.substring(0, stringBuilder.length() - 1);
     }
 }
