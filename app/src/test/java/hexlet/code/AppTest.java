@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class AppTest {
 
     @Test
-    public void testAppMainSuccess() {
+    public void testAppSuccess() {
         String path1 = TestUtils.getFixturePathAsString("file1TestIn.json");
         String path2 = TestUtils.getFixturePathAsString("file2TestIn.json");
         String[] args = {path1, path2};
@@ -28,7 +28,7 @@ public class AppTest {
     }
 
     @Test
-    public void testAppMainFailed() {
+    public void testAppFailed() {
         String path1 = TestUtils.getFixturePathAsString("file11TestIn.json");
         String path2 = TestUtils.getFixturePathAsString("file2TestIn.json");
         String[] args = {path1, path2};
