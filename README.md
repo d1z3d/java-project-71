@@ -1,27 +1,36 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/d1z3d/java-project-71/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/d1z3d/java-project-71/actions) [![Maintainability](https://api.codeclimate.com/v1/badges/b536ef390e1bc0752161/maintainability)](https://codeclimate.com/github/d1z3d/java-project-71/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/b536ef390e1bc0752161/test_coverage)](https://codeclimate.com/github/d1z3d/java-project-71/test_coverage)
 
+## Asciinema
+[Step 5](https://asciinema.org/a/thPcphhGE1LrNDhfl2Zd5FdiC)
 
+[Step 7](https://asciinema.org/a/ORJ4NflGQDOaVtRqqNXoIEeD3)
 
-## Вычислитель отличий
-Вычислитель отличий – программа, определяющая разницу между двумя структурами данных. Это популярная задача, для решения которой существует множество онлайн-сервисов, например: http://www.jsondiff.com/. Подобный механизм используется при выводе тестов или при автоматическом отслеживании изменении в конфигурационных файлах.
+[Step 8](https://asciinema.org/a/aMhs0jmeHkeJGfRHoTdqK04fP)
 
-Возможности утилиты:
+[Step 9](https://asciinema.org/a/o4HhktbCLUo1PUjQi5d2nc9vn)
 
-1. Поддержка разных входных форматов: yaml и json
-2. Генерация отчета в виде plain text, stylish и json
+[Step 10](https://asciinema.org/a/ADVwojLVhjx34WBS4GXZfDYF9)
+
+## Difference calculator
+A difference calculator is a program that determines the difference between two data structures. This is a popular task, for which there are many online services, for example: http://www.jsondiff.com/. A similar mechanism is used when outputting tests or automatically tracking changes in configuration files.
+
+Utility features:
+
+1. Supports different input formats: "yaml" и "json"
+2. Generating a report in the form "plain" text, "stylish" и "json"
 
 Пример использования:
 
 ```bash
-# формат plain
+# plain
 ./app --format plain path/to/file.yml another/path/file.json
 
 Property 'follow' was added with value: false
 Property 'baz' was updated. From 'bas' to 'bars'
 Property 'group2' was removed
 
-# формат stylish
+# stylish
 ./app filepath1.json filepath2.json
 
 {
@@ -35,13 +44,15 @@ Property 'group2' was removed
 }
 ```
 
-## Asciinema
-[Step 5](https://asciinema.org/a/thPcphhGE1LrNDhfl2Zd5FdiC)
+## Based on
+Gradle 8.4
 
-[Step 7](https://asciinema.org/a/ORJ4NflGQDOaVtRqqNXoIEeD3)
+Java 20
 
-[Step 8](https://asciinema.org/a/aMhs0jmeHkeJGfRHoTdqK04fP)
+## Run application
+You have to install the [make](https://guides.hexlet.io/ru/makefile-as-task-runner/ _gl=1*1b2sh59*_ga*NzQ5MzAxNTIzLjE2OTkyOTM2MTc.*_ga_PM3R85EKHN*MTcwMjIyNTQ0MS4xMDguMS4xNzAyMjI3OTYzLjYwLjAuMA..*_ga_WWGZ6EVHEY*MTcwMjIyNTQ0MS4xMTEuMS4xNzAyMjI3OTYzLjYwLjAuMA..) utility.
 
-[Step 9](https://asciinema.org/a/o4HhktbCLUo1PUjQi5d2nc9vn)
-
-[Step 10](https://asciinema.org/a/ADVwojLVhjx34WBS4GXZfDYF9)
+Run command:
+```
+make run-dist
+```
