@@ -12,8 +12,8 @@ public class Plain {
         StringBuilder stringBuilder = new StringBuilder();
 
         for (var node : data) {
-            Object value1 = node.get("valueOfFirstFile");
-            Object value2 = node.get("valueOfSecondFile");
+            Object value1 = node.getOrDefault("valueOfFirstFile", node.get("value"));
+            Object value2 = node.getOrDefault("valueOfSecondFile", node.get("value"));
 
             if (value1 != null) {
                 if (value1 instanceof ArrayList || value1 instanceof HashMap || value1 instanceof LinkedMap) {
@@ -30,7 +30,6 @@ public class Plain {
                     value2 = String.format("'%s'", value2);
                 }
             }
-
 
             Object operation = node.get("operation");
             if (operation.equals("added")) {

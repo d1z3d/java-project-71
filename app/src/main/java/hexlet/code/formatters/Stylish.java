@@ -13,17 +13,17 @@ public class Stylish {
                 stringBuilder.append(String.format("  %s %s: %s\n",
                         "+",
                         node.get("key"),
-                        node.get("valueOfSecondFile")));
+                        node.get("value")));
             } else if (operation.equals("equals")) {
                 stringBuilder.append(String.format("  %s %s: %s\n",
                         " ",
                         node.get("key"),
-                        node.get("valueOfFirstFile")));
+                        node.get("value")));
             } else if (operation.equals("removed")) {
                 stringBuilder.append(String.format("  %s %s: %s\n",
                         "-",
                         node.get("key"),
-                        node.get("valueOfFirstFile")));
+                        node.get("value")));
             } else if (operation.equals("updated")) {
                 stringBuilder.append(String.format("  %s %s: %s\n",
                         "-",

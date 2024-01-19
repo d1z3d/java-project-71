@@ -1,7 +1,0 @@
-{
-  "timeout": 20,
-  "verbose": true,
-  "host": "hexlet.io",
-  "action": "test field that starts with A",
-  "numbers1": "avs"
-}

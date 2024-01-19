@@ -15,5 +15,4 @@ public class Json {
         result.put("differ", data);
         return objectMapper.writeValueAsString(result);
     }
-
 }
