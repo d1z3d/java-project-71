@@ -2,11 +2,6 @@ package hexlet.code;
 
 import org.junit.jupiter.api.Test;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DifferTest {
