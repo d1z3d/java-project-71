@@ -2,6 +2,11 @@ package hexlet.code;
 
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DifferTest {
@@ -39,6 +44,8 @@ public class DifferTest {
 
         String actual = Differ.generate(path1, path2);
         assertEquals(expected, actual);
+
+        TestUtils.createTestOutputFile("testGenerateStylishByJson.txt", actual);
     }
 
     @Test
@@ -62,6 +69,8 @@ public class DifferTest {
 
         String actual = Differ.generate(path1, path2, "plain");
         assertEquals(expected, actual);
+
+        TestUtils.createTestOutputFile("testGeneratePlainByJson.txt", actual);
     }
     @Test
     public void testGenerateJsonByJson() throws Exception {
@@ -94,6 +103,8 @@ public class DifferTest {
 
         String actual = Differ.generate(path1, path2, "json");
         assertEquals(expected, actual);
+
+        TestUtils.createTestOutputFile("testGenerateJsonByJson.json", actual);
     }
 
 
@@ -130,6 +141,8 @@ public class DifferTest {
 
         String actual = Differ.generate(path1, path2);
         assertEquals(expected, actual);
+
+        TestUtils.createTestOutputFile("testGenerateStylishByYml.txt", actual);
     }
 
     @Test
@@ -153,6 +166,8 @@ public class DifferTest {
 
         String actual = Differ.generate(path1, path2, "plain");
         assertEquals(expected, actual);
+
+        TestUtils.createTestOutputFile("testGeneratePlainByYml.txt", actual);
     }
 
     @Test
@@ -186,5 +201,7 @@ public class DifferTest {
 
         String actual = Differ.generate(path1, path2, "json");
         assertEquals(expected, actual);
+
+        TestUtils.createTestOutputFile("testGenerateJsonByYml.json", actual);
     }
 }
