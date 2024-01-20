@@ -10,6 +10,10 @@ public class TestUtils {
         return Paths.get("src", "test", "resources", file).toString();
     }
 
+    public static String getFixturePathAsString(String folder, String file) {
+        return Paths.get("src", "test", "resources", folder,  file).toString();
+    }
+
     public static void createTestOutputFile(String nameOfFile, String data) {
         String path = TestUtils.getFixturePathAsString(nameOfFile);
         File file = new File(path);
