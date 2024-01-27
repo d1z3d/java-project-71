@@ -5,7 +5,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class DifferTest {
+public final class DifferTest {
 
     private static String pathJson1 = TestUtils.getFixturePathAsString("file1TestIn.json");
     private static String pathJson2 = TestUtils.getFixturePathAsString("file2TestIn.json");
