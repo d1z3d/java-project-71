@@ -16,13 +16,13 @@ public class DiffBuilder {
             Object value1 = Utils.replaceNullToString(firstMap.get(key));
             Object value2 = Utils.replaceNullToString(secondMap.get(key));
             if (!firstMap.containsKey(key)) {
-                node = createNode(key, "added", false, secondMap.get(key));
+                node = createNode(key, "added", false, secondMap.get(key), null);
             } else if (!secondMap.containsKey(key)) {
-                node = createNode(key, "removed", false, firstMap.get(key));
+                node = createNode(key, "removed", false, firstMap.get(key), null);
             } else if (value1.equals(value2)) {
-                node = createNode(key, "equals", true, firstMap.get(key));
+                node = createNode(key, "equals", true, firstMap.get(key), secondMap.get(key));
             } else {
-                node = createNode(key, firstMap.get(key), secondMap.get(key));
+                node = createNode(key, "updated", true, firstMap.get(key), secondMap.get(key));
             }
             result.add(node);
         }
@@ -38,26 +38,21 @@ public class DiffBuilder {
     }
 
     private static Map<String, Object> createNode(String key,
+                                                  String operation,
+                                                  boolean hasInBothFiles,
                                                   Object value1,
                                                   Object value2) {
         Map<String, Object> node = new HashMap<>();
         node.put("key", key);
-        node.put("operation", "updated");
-        node.put("hasInBothFiles", "true");
-        node.put("valueOfFirstFile", value1);
-        node.put("valueOfSecondFile", value2);
+        node.put("operation", operation);
+        node.put("hasInBothFiles", hasInBothFiles);
+        if (operation.equals("updated")) {
+            node.put("valueOfFirstFile", value1);
+            node.put("valueOfSecondFile", value2);
+        } else {
+            node.put("value", value1);
+        }
         return node;
     }
 
-    private static Map<String, Object> createNode(String key,
-                                                  String operation,
-                                                  boolean hasInBothFiles,
-                                                  Object value) {
-        Map<String, Object> node = new HashMap<>();
-        node.put("key", key);
-        node.put("operation", operation);
-        node.put("hasInBothFiles", hasInBothFiles);
-        node.put("value", value);
-        return node;
-    }
 }

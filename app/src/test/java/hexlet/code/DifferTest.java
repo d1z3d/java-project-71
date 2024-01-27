@@ -1,86 +1,57 @@
 package hexlet.code;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DifferTest {
 
-    @Test
-    public void testGenerateStylishByJson() throws Exception {
-        String path1 = TestUtils.getFixturePathAsString("file1TestIn.json");
-        String path2 = TestUtils.getFixturePathAsString("file2TestIn.json");
+    private static String pathJson1 = TestUtils.getFixturePathAsString("file1TestIn.json");
+    private static String pathJson2 = TestUtils.getFixturePathAsString("file2TestIn.json");
+    private static String pathYaml1 = TestUtils.getFixturePathAsString("file1TestIn.yml");;
+    private static String pathYaml2 = TestUtils.getFixturePathAsString("file2TestIn.json");
+    private static String expectedStylish;
+    private static String expectedPlain;
 
-        String expected = Utils.getDataFromFile(TestUtils.getFixturePathAsString("stylishExpected.txt"));
+    private static String expectedJson;
 
-        String actual = Differ.generate(path1, path2);
-        assertEquals(expected, actual);
-
-        TestUtils.createTestOutputFile("testGenerateStylishByJson.txt", actual);
+    static {
+        try {
+            expectedStylish = Utils.getDataFromFile(TestUtils.getFixturePathAsString("stylishExpected.txt"));
+            expectedPlain = Utils.getDataFromFile(TestUtils.getFixturePathAsString("plainExpected.txt"));
+            expectedJson = Utils.getDataFromFile(TestUtils.getFixturePathAsString("jsonExpected.txt"));
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    @Test
-    public void testGeneratePlainByJson() throws Exception {
-        String path1 = TestUtils.getFixturePathAsString("file1TestIn.json");
-        String path2 = TestUtils.getFixturePathAsString("file2TestIn.json");
-
-        String expected = Utils.getDataFromFile(TestUtils.getFixturePathAsString("plainExpected.txt"));
-
-        String actual = Differ.generate(path1, path2, "plain");
+    @ParameterizedTest(name = "{index} - {0}")
+    @MethodSource("jsonDataProvider")
+    public void testJsonDiffer(String format, String path1, String path2, String expected) throws Exception {
+        String actual = Differ.generate(path1, path2, format);
         assertEquals(expected, actual);
-
-        TestUtils.createTestOutputFile("testGeneratePlainByJson.txt", actual);
     }
-    @Test
-    public void testGenerateJsonByJson() throws Exception {
-        String path1 = TestUtils.getFixturePathAsString("file1TestIn.json");
-        String path2 = TestUtils.getFixturePathAsString("file2TestIn.json");
-
-        String expected = Utils.getDataFromFile(TestUtils.getFixturePathAsString("jsonExpected.txt"));
-
-        String actual = Differ.generate(path1, path2, "json");
+    @ParameterizedTest(name = "{index} - {0}")
+    @MethodSource("ymlDataProvider")
+    public void testYmlDiffer(String format, String path1, String path2, String expected) throws Exception {
+        String actual = Differ.generate(path1, path2, format);
         assertEquals(expected, actual);
-
-        TestUtils.createTestOutputFile("testGenerateJsonByJson.json", actual);
     }
 
 
-    @Test
-    public void testGenerateStylishByYml() throws Exception {
-        String path1 = TestUtils.getFixturePathAsString("file1TestIn.yml");
-        String path2 = TestUtils.getFixturePathAsString("file2TestIn.yml");
-
-        String expected = Utils.getDataFromFile(TestUtils.getFixturePathAsString("stylishExpected.txt"));
-
-        String actual = Differ.generate(path1, path2);
-        assertEquals(expected, actual);
-
-        TestUtils.createTestOutputFile("testGenerateStylishByYml.txt", actual);
+    private static Object[][] jsonDataProvider() {
+        return new Object[][]{
+                {"stylish", pathJson1, pathJson2, expectedStylish},
+                {"plain", pathJson1, pathJson2, expectedPlain},
+                {"json", pathJson1, pathJson2, expectedJson},
+        };
     }
-
-    @Test
-    public void testGeneratePlainByYml() throws Exception {
-        String path1 = TestUtils.getFixturePathAsString("file1TestIn.yml");
-        String path2 = TestUtils.getFixturePathAsString("file2TestIn.yml");
-
-        String expected = Utils.getDataFromFile(TestUtils.getFixturePathAsString("plainExpected.txt"));
-
-        String actual = Differ.generate(path1, path2, "plain");
-        assertEquals(expected, actual);
-
-        TestUtils.createTestOutputFile("testGeneratePlainByYml.txt", actual);
-    }
-
-    @Test
-    public void testGenerateJsonByYml() throws Exception {
-        String path1 = TestUtils.getFixturePathAsString("file1TestIn.yml");
-        String path2 = TestUtils.getFixturePathAsString("file2TestIn.yml");
-
-        String expected = Utils.getDataFromFile(TestUtils.getFixturePathAsString("jsonExpected.txt"));
-
-        String actual = Differ.generate(path1, path2, "json");
-        assertEquals(expected, actual);
-
-        TestUtils.createTestOutputFile("testGenerateJsonByYml.json", actual);
+    private static Object[][] ymlDataProvider() {
+        return new Object[][]{
+                {"stylish", pathYaml1, pathYaml2, expectedStylish},
+                {"plain", pathYaml1, pathYaml2, expectedPlain},
+                {"json", pathYaml1, pathYaml2, expectedJson}
+        };
     }
 }

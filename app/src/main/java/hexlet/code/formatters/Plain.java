@@ -1,55 +1,56 @@
 package hexlet.code.formatters;
 
-import org.apache.commons.collections4.map.LinkedMap;
-
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class Plain {
-    public static String fillAsPlain(List<Map<String, Object>> data) {
-        StringBuilder stringBuilder = new StringBuilder();
+    private static StringBuilder stringBuilder;
 
+    public static String fillAsPlain(List<Map<String, Object>> data) {
+        stringBuilder = new StringBuilder();
         for (var node : data) {
             Object value1 = node.getOrDefault("valueOfFirstFile", node.get("value"));
             Object value2 = node.getOrDefault("valueOfSecondFile", node.get("value"));
 
-            if (value1 != null) {
-                if (value1 instanceof ArrayList || value1 instanceof HashMap || value1 instanceof LinkedMap) {
-                    value1 = "[complex value]";
-                } else if (value1 instanceof String) {
-                    value1 = String.format("'%s'", value1);
-                }
-            }
+            value1 = replaceArrayToComplexString(value1);
+            value2 = replaceArrayToComplexString(value2);
 
-            if (value2 != null) {
-                if (value2 instanceof ArrayList || value2 instanceof HashMap || value2 instanceof LinkedMap) {
-                    value2 = "[complex value]";
-                } else if (value2 instanceof String) {
-                    value2 = String.format("'%s'", value2);
-                }
-            }
+            String operation = node.get("operation").toString();
 
-            Object operation = node.get("operation");
-            if (operation.equals("added")) {
-                stringBuilder.append(String.format("Property '%s' was %s with value: %s\n",
-                        node.get("key"),
-                        operation,
-                        value2));
-            } else if (operation.equals("removed")) {
-                stringBuilder.append(String.format("Property '%s' was %s\n",
-                        node.get("key"),
-                        operation));
-            } else if (operation.equals("updated")) {
-                stringBuilder.append(String.format("Property '%s' was %s. From %s to %s\n",
-                        node.get("key"),
-                        operation,
-                        value1,
-                        value2));
+            appendElement(operation, node.get("key"), value1, value2);
+        }
+        return stringBuilder.substring(0, stringBuilder.length() - 1);
+    }
+
+    private static Object replaceArrayToComplexString(Object value) {
+        if (value != null) {
+            if (value instanceof List<?> || value instanceof Map<?, ?>) {
+                return "[complex value]";
+            } else if (value instanceof String) {
+                return String.format("'%s'", value);
+            }
+        }
+        return value;
+    }
+
+    private static void appendElement(String operation, Object key, Object firstElement, Object secondElement) {
+        switch (operation) {
+            case "added" -> stringBuilder.append(String.format("Property '%s' was %s with value: %s\n",
+                    key,
+                    operation,
+                    secondElement));
+            case "removed" -> stringBuilder.append(String.format("Property '%s' was %s\n",
+                    key,
+                    operation));
+            case "updated" -> stringBuilder.append(String.format("Property '%s' was %s. From %s to %s\n",
+                    key,
+                    operation,
+                    firstElement,
+                    secondElement));
+            default -> {
+                break;
             }
         }
 
-        return stringBuilder.substring(0, stringBuilder.length() - 1);
     }
 }
