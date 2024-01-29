@@ -4,10 +4,9 @@ import java.util.List;
 import java.util.Map;
 
 public class Plain {
-    private static StringBuilder stringBuilder;
 
     public static String fillAsPlain(List<Map<String, Object>> data) {
-        stringBuilder = new StringBuilder();
+        StringBuilder stringBuilder = new StringBuilder();
         for (var node : data) {
             Object value1 = node.getOrDefault("valueOfFirstFile", node.get("value"));
             Object value2 = node.getOrDefault("valueOfSecondFile", node.get("value"));
@@ -17,23 +16,29 @@ public class Plain {
 
             String operation = node.get("operation").toString();
 
-            appendElement(operation, node.get("key"), value1, value2);
+            appendElement(stringBuilder, operation, node.get("key"), value1, value2);
         }
         return stringBuilder.substring(0, stringBuilder.length() - 1);
     }
 
-    private static Object replaceArrayToComplexString(Object value) {
+    private static String replaceArrayToComplexString(Object value) {
         if (value != null) {
             if (value instanceof List<?> || value instanceof Map<?, ?>) {
                 return "[complex value]";
             } else if (value instanceof String) {
                 return String.format("'%s'", value);
             }
+        } else {
+            return null;
         }
-        return value;
+        return value.toString();
     }
 
-    private static void appendElement(String operation, Object key, Object firstElement, Object secondElement) {
+    private static void appendElement(StringBuilder stringBuilder,
+                                      String operation,
+                                      Object key,
+                                      Object firstElement,
+                                      Object secondElement) {
         switch (operation) {
             case "added" -> stringBuilder.append(String.format("Property '%s' was %s with value: %s\n",
                     key,
@@ -51,6 +56,5 @@ public class Plain {
                 break;
             }
         }
-
     }
 }

@@ -9,9 +9,11 @@ import java.util.TreeSet;
 
 public class DiffBuilder {
     public static List<Map<String, Object>> compareData(Map<String, Object> firstMap, Map<String, Object> secondMap) {
-        List<Map<String, Object>> result = new ArrayList<>();
+        Set<String> keys = new TreeSet<>(firstMap.keySet());
+        keys.addAll(secondMap.keySet());
 
-        for (String key : getKeysFromMaps(firstMap, secondMap)) {
+        List<Map<String, Object>> result = new ArrayList<>();
+        for (String key : keys) {
             Map<String, Object> node;
             Object value1 = Utils.replaceNullToString(firstMap.get(key));
             Object value2 = Utils.replaceNullToString(secondMap.get(key));
@@ -26,16 +28,9 @@ public class DiffBuilder {
             }
             result.add(node);
         }
-
         return result;
     }
 
-    private static Set<String> getKeysFromMaps(Map<String, Object> firstMap, Map<String, Object> secondMap) {
-        Set<String> keys = new TreeSet<>();
-        keys.addAll(firstMap.keySet());
-        keys.addAll(secondMap.keySet());
-        return keys;
-    }
 
     private static Map<String, Object> createNode(String key,
                                                   String operation,

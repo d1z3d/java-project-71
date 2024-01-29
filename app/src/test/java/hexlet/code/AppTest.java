@@ -12,8 +12,8 @@ public class AppTest {
 
     @Test
     public void testAppSuccess() {
-        String path1 = TestUtils.getFixturePathAsString("file1TestIn.json");
-        String path2 = TestUtils.getFixturePathAsString("file2TestIn.json");
+        String path1 = TestUtils.getFixturePath("file1.json");
+        String path2 = TestUtils.getFixturePath("file2.json");
         String[] args = {path1, path2};
 
         App myApp = new App();
@@ -29,8 +29,8 @@ public class AppTest {
 
     @Test
     public void testAppFailed() {
-        String path1 = TestUtils.getFixturePathAsString("file11TestIn.json");
-        String path2 = TestUtils.getFixturePathAsString("file2TestIn.json");
+        String path1 = TestUtils.getFixturePath("file11TestIn.json");
+        String path2 = TestUtils.getFixturePath("file2.json");
         String[] args = {path1, path2};
 
         App myApp = new App();

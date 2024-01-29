@@ -8,11 +8,6 @@ import java.util.Optional;
 public class Utils {
     public static String getDataFromFile(String pathToFile) throws Exception {
         Path path = Paths.get(pathToFile).toAbsolutePath().normalize();
-
-        if (!Files.exists(path)) {
-            throw new Exception(String.format("File %s does not exist", path));
-        }
-
         return Files.readString(path);
     }
 
