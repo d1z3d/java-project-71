@@ -11,8 +11,8 @@ public class Plain {
             Object value1 = node.getOrDefault("valueOfFirstFile", node.get("value"));
             Object value2 = node.getOrDefault("valueOfSecondFile", node.get("value"));
 
-            value1 = replaceArrayToComplexString(value1);
-            value2 = replaceArrayToComplexString(value2);
+            value1 = stringify(value1);
+            value2 = stringify(value2);
 
             String operation = node.get("operation").toString();
 
@@ -21,15 +21,15 @@ public class Plain {
         return stringBuilder.substring(0, stringBuilder.length() - 1);
     }
 
-    private static String replaceArrayToComplexString(Object value) {
-        if (value != null) {
-            if (value instanceof List<?> || value instanceof Map<?, ?>) {
-                return "[complex value]";
-            } else if (value instanceof String) {
-                return String.format("'%s'", value);
-            }
-        } else {
-            return null;
+    private static String stringify(Object value) {
+        if (value == null) {
+            return "null";
+        }
+        if (value instanceof String) {
+            return "'" + value + "'";
+        }
+        if (value instanceof Map || value instanceof List) {
+            return "[complex value]";
         }
         return value.toString();
     }

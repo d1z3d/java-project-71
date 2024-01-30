@@ -6,7 +6,6 @@ import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
 
 import java.util.HashMap;
 import java.util.Map;
-
 public class Parser {
     public static Map<String, Object> parse(String data, String fileExtension) throws Exception {
         ObjectMapper objectMapper;

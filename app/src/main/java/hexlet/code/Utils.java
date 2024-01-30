@@ -18,12 +18,4 @@ public class Utils {
 
         return fileExtension.orElse(null);
     }
-
-    public static Object replaceNullToString(Object value) {
-        if (value == null) {
-            return "null";
-        }
-
-        return value;
-    }
 }

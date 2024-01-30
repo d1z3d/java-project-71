@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -15,13 +16,13 @@ public class DiffBuilder {
         List<Map<String, Object>> result = new ArrayList<>();
         for (String key : keys) {
             Map<String, Object> node;
-            Object value1 = Utils.replaceNullToString(firstMap.get(key));
-            Object value2 = Utils.replaceNullToString(secondMap.get(key));
+            Object value1 = firstMap.get(key);
+            Object value2 = secondMap.get(key);
             if (!firstMap.containsKey(key)) {
                 node = createNode(key, "added", false, secondMap.get(key), null);
             } else if (!secondMap.containsKey(key)) {
                 node = createNode(key, "removed", false, firstMap.get(key), null);
-            } else if (value1.equals(value2)) {
+            } else if (Objects.equals(value1, value2)) {
                 node = createNode(key, "equals", true, firstMap.get(key), secondMap.get(key));
             } else {
                 node = createNode(key, "updated", true, firstMap.get(key), secondMap.get(key));
