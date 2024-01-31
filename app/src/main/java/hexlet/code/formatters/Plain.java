@@ -16,7 +16,22 @@ public class Plain {
 
             String operation = node.get("operation").toString();
 
-            appendElement(stringBuilder, operation, node.get("key"), value1, value2);
+            switch (operation) {
+                case "added" -> stringBuilder.append(String.format("Property '%s' was %s with value: %s\n",
+                        node.get("key"),
+                        operation,
+                        value2));
+                case "removed" -> stringBuilder.append(String.format("Property '%s' was %s\n",
+                        node.get("key"),
+                        operation));
+                case "updated" -> stringBuilder.append(String.format("Property '%s' was %s. From %s to %s\n",
+                        node.get("key"),
+                        operation,
+                        value1,
+                        value2));
+                default -> {
+                }
+            }
         }
         return stringBuilder.substring(0, stringBuilder.length() - 1);
     }
@@ -32,29 +47,5 @@ public class Plain {
             return "[complex value]";
         }
         return value.toString();
-    }
-
-    private static void appendElement(StringBuilder stringBuilder,
-                                      String operation,
-                                      Object key,
-                                      Object firstElement,
-                                      Object secondElement) {
-        switch (operation) {
-            case "added" -> stringBuilder.append(String.format("Property '%s' was %s with value: %s\n",
-                    key,
-                    operation,
-                    secondElement));
-            case "removed" -> stringBuilder.append(String.format("Property '%s' was %s\n",
-                    key,
-                    operation));
-            case "updated" -> stringBuilder.append(String.format("Property '%s' was %s. From %s to %s\n",
-                    key,
-                    operation,
-                    firstElement,
-                    secondElement));
-            default -> {
-                break;
-            }
-        }
     }
 }
