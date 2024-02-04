@@ -19,13 +19,13 @@ public class DiffBuilder {
             Object value1 = firstMap.get(key);
             Object value2 = secondMap.get(key);
             if (!firstMap.containsKey(key)) {
-                node = createNode(key, "added", false, secondMap.get(key), null);
+                node = createNode(key, "added", secondMap.get(key), null);
             } else if (!secondMap.containsKey(key)) {
-                node = createNode(key, "removed", false, firstMap.get(key), null);
+                node = createNode(key, "removed", firstMap.get(key), null);
             } else if (Objects.equals(value1, value2)) {
-                node = createNode(key, "equals", true, firstMap.get(key), secondMap.get(key));
+                node = createNode(key, "equals", firstMap.get(key), secondMap.get(key));
             } else {
-                node = createNode(key, "updated", true, firstMap.get(key), secondMap.get(key));
+                node = createNode(key, "updated", firstMap.get(key), secondMap.get(key));
             }
             result.add(node);
         }
@@ -35,13 +35,11 @@ public class DiffBuilder {
 
     private static Map<String, Object> createNode(String key,
                                                   String operation,
-                                                  boolean hasInBothFiles,
                                                   Object value1,
                                                   Object value2) {
         Map<String, Object> node = new HashMap<>();
         node.put("key", key);
         node.put("operation", operation);
-        node.put("hasInBothFiles", hasInBothFiles);
         if (operation.equals("updated")) {
             node.put("valueOfFirstFile", value1);
             node.put("valueOfSecondFile", value2);

@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
 
-import java.util.HashMap;
 import java.util.Map;
 public class Parser {
     public static Map<String, Object> parse(String data, String fileExtension) throws Exception {
@@ -15,7 +14,7 @@ public class Parser {
         } else if (fileExtension.equals("yml")) {
             objectMapper = new YAMLMapper();
         } else {
-            return new HashMap<>();
+            throw new Exception("Unsupported expansion of file");
         }
         return objectMapper.readValue(data, new TypeReference<Map<String, Object>>() { });
     }

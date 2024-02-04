@@ -13,9 +13,12 @@ public final class DifferTest {
         String filePath1 = TestUtils.getFixturePath("file1." + expansion);
         String filePath2 = TestUtils.getFixturePath("file2." + expansion);
 
-        String actualStylish = Differ.generate(filePath1, filePath2);
+        String actualStylish1 = Differ.generate(filePath1, filePath2);
         String expectedStylish = Utils.getDataFromFile(TestUtils.getFixturePath("stylishExpected.txt"));
-        assertEquals(expectedStylish, actualStylish);
+        assertEquals(expectedStylish, actualStylish1);
+
+        String actualStylish2 = Differ.generate(filePath1, filePath2, "stylish");
+        assertEquals(expectedStylish, actualStylish2);
 
         String actualPlain = Differ.generate(filePath1, filePath2, "plain");
         String expectedPlain = Utils.getDataFromFile(TestUtils.getFixturePath("plainExpected.txt"));

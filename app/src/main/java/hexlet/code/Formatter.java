@@ -17,9 +17,10 @@ public class Formatter {
             case "json" -> {
                 return Json.fillAsJson(comparedData);
             }
-            default -> {
+            case "stylish" -> {
                 return Stylish.fillAsStylish(comparedData);
             }
+            default -> throw new Exception("Unsupported format of out");
         }
     }
 }
